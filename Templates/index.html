@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Bug Logger w/ NLP</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f9;
+            }
+            header {
+                background-color: #333;
+                color: white;
+                padding: 1em 0;
+                text-align: center;
+            }
+            .container {
+                max-width: 600px;
+                margin: 2em auto;
+                background: white;
+                padding: 1.5em;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            label {
+                margin-bottom: 0.5em;
+                font-weight: bold;
+            }
+            input, textarea, button {
+                margin-bottom: 1em;
+                padding: 0.8em;
+                font-size: 1em;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            button {
+                background-color: #333;
+                color: white;
+                cursor: pointer;
+                border: none;
+            }
+            button:hover {
+                background-color: #555;
+            }
+            .test-cases {
+                margin-top: 2em;
+            }
+            .test-cases ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            .test-cases ul li {
+                background: #f9f9f9;
+                margin: 0.5em 0;
+                padding: 0.8em;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+        </style>
+        <!-- SEO Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="A bug tracking system with natural language processing capabilities." />
+        <meta name="keywords" content="Bug, Logger, NLP, Tracker, Test Cases, Generation" />
+        <meta name="author" content="Oluwatobi Amarvi" />
+        <!-- OG Tags -->
+         <meta property="og:title" content="Bug Logger w/ NLP" />
+         <meta property="og:description" content="A bug tracking system with natural language processing capabilities." />
+         <meta property="og:authior" content="website" />
+        <!-- Favicon -->
+         <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/6919/6919111.png" />
+    </head>
+    <body>
+        <header>
+            <h1>Bug Logger w/ NLP</h1>
+        </header>
+        <div class="container">
+            <form action="/submit_bug" method="POST">
+                <label for="name">Bug Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter bug name" required>
+                <label for="description">Bug Description</label>
+                <textarea id="description" name="description" placeholder="Enter bug description (more descriptive the better)" required></textarea>
+                <button type="submit">Log Bug</button>
+            </form>
+        </div>
+
+        <div class="bug-list">
+            <h2>Logged Bugs</h2>
+            <ul>
+                {% if bugs %}
+                    {% for bug in bugs %}
+                    <li>
+                        <strong>{{ bug.name }}</strong>: {{ bug.description }}
+                        <ul>
+                            {% for test_case in bug.test_cases %}
+                            <li>{{ test_case }}</li>
+                            {% endfor %}
+                        </ul>
+                        <form action="/delete_bug/{{ bug.name }}" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                {% else %}
+                    <li>No bugs logged yet. Start by logging a bug above!</li>
+                {% endif %}
+            </ul>
+        </div>
+    </body>
+</html>
