@@ -56,7 +56,7 @@ def generate_test_cases(description):
         model_name="gemini-1.5-flash",
         generation_config=generation_config,
         #inital prompt/system instructions
-        system_instruction="Generate a list of " + str(num_test_cases) + " test cases from the given bug description (the test cases shouldn't be too long and must be separate by line) Try to fit it on one line.",
+        system_instruction="Generate a list of " + str(num_test_cases) + " detailed test cases based on the following bug description. Only list the number once. Each test case should be on a new line and directly address potential scenarios or edge cases related to the bug. If the description is unclear or not specific enough, provide alternative interpretations or clarifications for generating relevant test cases.",
     )
 
     chat_session = model.start_chat(
