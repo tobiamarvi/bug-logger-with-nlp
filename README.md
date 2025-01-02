@@ -14,5 +14,5 @@ A web-based bug tracking system that leverages Natural Language Processing (NLP)
 - Gemini AI: A generative AI model used to generate test cases from bug descriptions.
 - HTML/CSS: Frontend for user interface and styling.
 
-## NOTE: 
+## NOTE (IMPORTANT!): 
 A unique google ai API key is required for the '.env' file
