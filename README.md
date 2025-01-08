@@ -1,6 +1,6 @@
 # Bug Logger with Natural Language Processing
 
-A web-based bug tracking system that leverages Natural Language Processing (NLP) to automatically generate test cases for logged bugs. This project uses Flask as the web framework and Gemini AI for generating test cases based on bug descriptions.
+A web-based bug tracking system that leverages Natural Language Processing (NLP) to automatically generate test cases for logged bugs. This project uses Flask as the web framework and Gemini AI to create test cases based on bug descriptions.
 
 ## Features
 - Bug Logging: Users can log bugs by providing a bug name and description.
@@ -15,4 +15,7 @@ A web-based bug tracking system that leverages Natural Language Processing (NLP)
 - HTML/CSS: Frontend for user interface and styling.
 
 ## NOTE (IMPORTANT!): 
-A unique google ai API key is required for the '.env' file
+A unique Google AI API key is required for the '.env' file
+
+## PREVIEW
+![bugloggerpreview](https://github.com/user-attachments/assets/60e76aef-0991-4d6e-9475-1625209fca78)
