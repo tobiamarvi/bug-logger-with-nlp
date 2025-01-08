@@ -4,9 +4,12 @@ import os
 import requests
 from dotenv import load_dotenv
 load_dotenv()
-num_test_cases = 10
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+api_key=os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=api_key)
+
+num_test_cases = 10
 
 app = Flask(__name__)
 
@@ -56,7 +59,7 @@ def generate_test_cases(description):
         model_name="gemini-1.5-flash",
         generation_config=generation_config,
         #inital prompt/system instructions
-        system_instruction="Generate a list of " + str(num_test_cases) + " detailed test cases based on the following bug description. Only list the number once. Each test case should be on a new line and directly address potential scenarios or edge cases related to the bug. If the description is unclear or not specific enough, provide alternative interpretations or clarifications for generating relevant test cases.",
+        system_instruction="Generate a list of " + str(num_test_cases) + " detailed test cases based on the following bug description. Only list the number once. Each test case should be on a new line and directly address potential scenarios or edge cases related to the bug. If the description is unclear or not specific enough, provide alternative interpretations or clarifications for generating relevant test cases. Don't make the test case names bold.",
     )
 
     chat_session = model.start_chat(
@@ -64,7 +67,7 @@ def generate_test_cases(description):
         ]
     )
 
-    prompt = {description}
+    prompt = description
     response = chat_session.send_message(prompt)
     print(response)
     # Extract the text response and split into individual test cases
@@ -72,4 +75,4 @@ def generate_test_cases(description):
     return [case for case in test_cases if case.strip()]  # Filter out empty cases
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
