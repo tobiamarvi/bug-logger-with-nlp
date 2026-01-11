@@ -15,7 +15,7 @@ A web-based bug tracking system that leverages Natural Language Processing (NLP)
 - HTML/CSS: Frontend for user interface and styling.
 
 ## NOTE (IMPORTANT!): 
-A unique Google AI API key is required for the '.env' file
+A unique Google AI API key is required for the '.env' file. Refer to .env.example.
 
 ## PREVIEW
 ![bugloggerpreview](https://github.com/user-attachments/assets/60e76aef-0991-4d6e-9475-1625209fca78)
